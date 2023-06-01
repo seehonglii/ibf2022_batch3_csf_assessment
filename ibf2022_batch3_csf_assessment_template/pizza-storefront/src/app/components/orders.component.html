@@ -1,0 +1,20 @@
+<h1>Orders for {{email}}</h1>
+
+<div class="box-it">
+  <table>
+    <div *ngIf="pendingOrders.length > 0 else emptyList">
+      <tr *ngFor="let a of pendingOrders">
+        <td>Date: {{ a.date | date:'MMM d y' }}</td>
+        <td>Order Id: {{ a.orderId }}</td>
+        <td>{{ a.total }}</td>
+        <button (click)="delivered(a.orderId)">Delivered</button>
+      </tr>
+    </div>
+  </table>
+</div>
+
+<button [routerLink]="['']">Back to Ordering</button>
+
+<ng-template #emptyList>
+  <code>There is no order</code>
+</ng-template>
